@@ -11,7 +11,13 @@ The module provides a combat trait advancement (CTA) system for adult rulers und
 
 ## Compatibility Notes ##
 
-CTA is highly modular, even with respect to its integration with the New Duel Engine.  The only conflict which an integrator or user combining it at game launch with other mods will likely run into is in the file /common/on_actions/00_on_actions.txt, where CTA adds a single entry to the on_combat_pulse on_action's random_events list.
+CTA is highly modular, even with respect to its integration with the New Duel Engine.
+
+- The only conflict which an integrator or user combining it at game launch with other mods will likely run into is in the file /common/on_actions/00_on_actions.txt, where CTA adds a single entry to the on_combat_pulse on_action's random_events list.  However, since it is unlikely that this mod will be integrated without the New Duel Engine, NDE's 00_on_actions.txt is the template upon which CTA's added hook is based (rather than vanilla).  Ergo, the 00_on_actions.txt will include the [minimal] additions over vanilla the author of NDE, jordarkelf, has added to enable battlefield duels.
+
+- An override of the New Duel Engine's duel_engine_output_events.txt is provided to provide the combat experience-earning hook from victorious duels.  You may choose to hook CTA up to duels differently (just see cta.10's documentation in events/cta_events.txt for reference on what scopes are required in the event sequence which calls it), or you may even choose to disable duel input by deleting the included duel_engine_output_events.txt (battle participation experience will still work).
+
+- Since CTA is targetted toward its parent mod, Project Balance (which itself integrates the New Duel Engine), it also references some of the extended character traits available in this mod (and other related mods, such as VIET).  For integration/usage with mods that lack these traits ("agile," etc.), the integrator has my assurance that the references to undefined traits won't break a single thing.
 
 ## Integration into Other Mods ##
 
